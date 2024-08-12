@@ -1,0 +1,33 @@
+Explicación de la lógica detrás del diseño de las tablas y las consultas.
+
+Diseño de las Tablas
+
+1. Tabla usuarios
+Propósito: Almacena información sobre los usuarios del sistema.
+Columnas:
+usuario_id: Identificador único para cada usuario. Se usa como clave primaria.
+nombre: Nombre completo del usuario.
+email: Correo electrónico del usuario.
+rol: Rol del usuario en el sistema (por ejemplo, comprador, administrador).
+estado: Estado del usuario (activo/inactivo).
+Lógica:
+La tabla usuarios es fundamental para gestionar la información básica de los usuarios del sistema. El campo usuario_id permite relacionar a los usuarios con otras tablas como ventas, garantizando que cada registro de venta esté asociado con un usuario específico.
+
+2. Tabla ventas
+
+Propósito: Registra las transacciones de ventas realizadas en el sistema.
+Columnas:
+venta_id: Identificador único para cada transacción de venta. Se usa como clave primaria.
+user_id: Identificador del usuario que realizó la compra. Es una clave foránea que referencia usuario_id en la tabla usuarios.
+fecha_venta: Fecha en que se realizó la venta.
+total_venta: Monto total de la venta.
+Lógica:
+La tabla ventas es crucial para realizar un seguimiento de las transacciones. El campo user_id permite unir esta tabla con la tabla usuarios para identificar quién realizó cada compra. Además, fecha_venta y total_venta permiten realizar análisis de ventas, como el cálculo de ventas totales y el análisis de tendencias temporales.
+
+3. Tabla productos
+
+Propósito: Almacena información sobre los productos disponibles para la venta.
+Columnas:
+producto_id: Identificador único para cada producto. Se usa como clave primaria.
+nombre_producto: Nombre del producto.
+precio: Precio del producto.
